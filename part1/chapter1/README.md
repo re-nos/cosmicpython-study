@@ -28,7 +28,7 @@
 
 - 값 객체(value object): 내장 데이터에 따라 유일하게 식별될 수 있는 도메인 객체; 보통 불변 객체(immutable object)
 
-불변 객체를 표현하기 위해 `데이터 클래스` 또는 `네임드튜플(namedtuple)`을 사용할 수 있다. 이 표현의 장점은 값 동등성(value equality)을 부여할 수 있다는 것이다.
+불변 객체를 표현하기 위해 `데이터 클래스(dataclass)` 또는 `네임드튜플(namedtuple)`을 사용할 수 있다. 이 표현의 장점은 값 동등성(value equality)을 부여할 수 있다는 것이다.
 
 ```python
 from dataclasses import dataclass
@@ -71,7 +71,7 @@ class Batch:
     def __hash__(self):
         return hash(self.reference)
 ```
-파이썬의 `\_\_eq__` 마법 메서드(magic method)를 사용해 이 클래스가 == 연산자를 작동하는 방식을 정의한다. `\_\_hash__`는 객체를 집합에 추가하거나 딕셔너리의 키로 사용할 때 동작을 제어하기 위해 사용한다.
+파이썬의 `__eq__` 마법 메서드(magic method)를 사용해 이 클래스가 == 연산자를 작동하는 방식을 정의한다. `__hash__`는 객체를 집합에 추가하거나 딕셔너리의 키로 사용할 때 동작을 제어하기 위해 사용한다.
 > \_\_eq__를 변경하지 않았다면 \_\_hash__를 변경해서는 안 된다.
 
 값 객체는 모든 값 속성을 사용해 해시를 정의하고 객체를 반드시 불변 객체로 만든다. 데이터 클래스의 `@frozen=True`를 지정하면 된다.  
